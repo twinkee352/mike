@@ -1,1 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bro!</title>
 
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#020024,#090979,#000);
+overflow-x:hidden;
+color:white;
+text-align:center;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-2;
+}
+
+h1{
+font-size:60px;
+margin-top:40px;
+text-shadow:0 0 20px cyan;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px cyan;}
+to{ text-shadow:0 0 40px deepskyblue;}
+}
+
+.card{
+width:90%;
+max-width:900px;
+margin:auto;
+margin-top:30px;
+padding:30px;
+background:rgba(255,255,255,.08);
+border-radius:20px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 30px cyan;
+}
+
+.message{
+font-size:22px;
+line-height:1.8;
+margin-top:20px;
+}
+
+.gallery{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:30px;
+gap:20px;
+}
+
+.gallery img{
+width:220px;
+height:280px;
+object-fit:cover;
+border-radius:15px;
+border:3px solid cyan;
+transition:.5s;
+box-shadow:0 0 20px cyan;
+}
+
+.gallery img:hover{
+transform:scale(1.08) rotate(2deg);
+}
+
+.balloon{
+position:fixed;
+bottom:-150px;
+width:60px;
+animation:float linear infinite;
+opacity:.8;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-130vh);}
+}
+
+footer{
+margin:50px;
+font-size:20px;
+color:cyan;
+}
+
+button{
+padding:15px 35px;
+font-size:18px;
+background:cyan;
+border:none;
+border-radius:40px;
+cursor:pointer;
+margin-top:25px;
+font-weight:bold;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<h1>🎉 HAPPY BIRTHDAY BRO! 🎉</h1>
+
+<div class="card">
+
+<h2>Another Level Unlocked 🏆</h2>
+
+<p class="message">
+
+Happy Birthday my brother! 💙
+
+Today is all about celebrating the amazing person you are.
+
+May this new chapter bring you success, happiness, peace, more money, good health, unforgettable adventures and every blessing you deserve.
+
+Keep chasing your dreams, stay focused and never stop being the real one you've always been.
+
+Enjoy your day to the fullest... this year belongs to YOU! 🎂🎉🔥
+
+  ,,siku ni yako mkuu...+1 kinara na uwache kulala sana ,,,
+
+  Be blessed broo and a +1 to you @Mike_unique ,,,from...
+
+                                                         @Wagwan wadau....
+
+
+</p>
+
+<button onclick="playMusic()">🎵 Play Birthday Music</button>
+
+<div class="gallery">
+
+<img src="images/pic1.jpg">
+
+<img src="images/pic2.jpg">
+
+<img src="images/pic3.jpg">
+
+<img src="images/pic4.jpg">
+
+<img src="images/pic5.jpg">
+
+<img src="images/pic6.jpg">
+
+  <img src="images/pic6.jpg">
+
+  <img src="images/pic6.jpg">
+
+</div>
+
+</div>
+
+<footer>
+Made with 💙 by Your Bro
+</footer>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+
+const style = document.createElement("style");
+style.innerHTML = `
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}`;
+document.head.appendChild(style);
+
+function playMusic(){
+document.getElementById("music").play();
+}
+
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let stars=[];
+
+for(let i=0;i<200;i++){
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+d:Math.random()*2
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+
+stars.forEach(s=>{
+ctx.beginPath();
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+ctx.fill();
+
+s.y+=s.d;
+
+if(s.y>canvas.height){
+s.y=0;
+s.x=Math.random()*canvas.width;
+}
+});
+
+requestAnimationFrame(draw);
+}
+
+draw();
+
+for(let i=0;i<25;i++){
+
+let b=document.createElement("img");
+
+b.src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Balloon_icon.svg";
+
+b.className="balloon";
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.animationDuration=(6+Math.random()*6)+"s";
+
+b.style.width=(40+Math.random()*40)+"px";
+
+document.body.appendChild(b);
+
+}
+
+</script>
+
+</body>
+</html>
