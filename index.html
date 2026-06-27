@@ -262,15 +262,14 @@ document.body.appendChild(b);
 }
 
 </script>
-   <audio id="bgMusic" controls loop>
-    <source src="birthday-song.mp3.mp3" type="audio/mpeg">
-  </audio>
+<audio id="bgMusic" controls loop>
+    <source src="birthday-song.mp3" type="audio/mpeg">
+</audio>
 
-  <script>
-    document.addEventListener("click", function () {
-      document.getElementById("bgMusic").play();
-    }, { once: true });
-  </script>
-
+<script>
+window.onload = function () {
+    document.getElementById("bgMusic").play().catch(() => {});
+};
+</script>
 </body>
 </html>
